@@ -71,6 +71,9 @@
   (dotspacemacs|call-func dotspacemacs/init "Calling dotfile init...")
   (dotspacemacs|call-func dotspacemacs/user-init "Calling dotfile user init...")
   (configuration-layer/initialize)
+  ;; frame title init
+  (when (and (display-graphic-p) dotspacemacs-frame-title-format)
+    (setq frame-title-format '((:eval (spacemacs/frame-title-prepare)))))
   ;; default theme
   (let ((default-theme (car dotspacemacs-themes)))
     (spacemacs/load-theme default-theme)
